@@ -25,7 +25,7 @@ a.setSmooth(.8)
 src(s0)
   .blend(src(o0).scale(0.97), 0.9)
   .modulateScale(
-    noise(() => 5 + a.fft[3] * 10).scale(() => 1 - a.fft[3] * 0.1),
+    noise(() => 1 + a.fft[0] * 10).scale(() => 1 - a.fft[0] * 0.1),
     0.05
   )
   .out(o0);
