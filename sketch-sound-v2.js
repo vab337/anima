@@ -3,9 +3,9 @@ P5.toggle(0); // hide p5
 
 H.pixelDensity(2); // set res
 
-a.show() // a.hide() to remove
-a.setBins(8)
-a.setSmooth(.8)
+a.show(); // a.hide() to remove
+a.setBins(8);
+a.setSmooth(0.8);
 
 let noiseSlider;
 
@@ -55,17 +55,16 @@ function setup() {
 }
 
 function handleBGUpload(file) {
-  if (file.type === 'image') {
+  if (file.type === "image") {
     bg = loadImage(file.data);
   }
 }
 
 function handleSVGUpload(file) {
-  if (file.type === 'image') {
+  if (file.type === "image") {
     svgImg = loadImage(file.data);
   }
 }
-
 
 function draw() {
   clear();
@@ -74,16 +73,26 @@ function draw() {
   tint(bgCol);
   if (bg) image(bg, 0, 0, windowWidth, windowHeight);
 
- if (svgImg) {
+  if (svgImg) {
     const tintCol = tintColorPicker.color();
     const tintCol2 = tintColorPicker2.color();
     tint(tintCol);
-    image(svgImg, 0 + svgImg.width / 4, height - svgImg.height, 1200);
-
-    tint(tintCol2);
+    // image(svgImg, 0 + svgImg.width / 4, height - svgImg.height, 1200);
     let aspect = svgImg2.height / svgImg2.width;
     let displayW = 1100;
     let displayH = displayW * aspect;
+    image(
+      svgImg,
+      60 + svgImg.width / 4,
+      height - svgImg.height,
+      displayW,
+      displayH
+    );
+
+    // tint(tintCol2);
+    // let aspect = svgImg2.height / svgImg2.width;
+    // let displayW = 1100;
+    // let displayH = displayW * aspect;
     // image(svgImg2, 60 + svgImg.width / 4, height - svgImg.height + 40, displayW, displayH);
   }
 }
